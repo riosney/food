@@ -1,4 +1,4 @@
-package com.escudo7.food;
+package com.escudo7.food.di;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
