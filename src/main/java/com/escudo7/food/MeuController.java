@@ -14,8 +14,6 @@ public class MeuController {
 	
 	public MeuController(AtivacaoClienteService ativacaoClienteService) {
 		this.ativacaoClienteService = ativacaoClienteService;
-		
-		System.out.println("MeuController: " + ativacaoClienteService);
 	}
 
 	@GetMapping("/hello")
