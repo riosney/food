@@ -22,7 +22,7 @@ public class MeuController {
 		Cliente maria = new Cliente("Maria", "maria@gmail.com", "9988775566");
 		ativacaoClienteService.ativar(maria);
 		
-		return "hello";
+		return "Hello";
 	}
 
 }
