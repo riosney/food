@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.escudo7.food.Escudo7foodApiApplication;
 import com.escudo7.food.domain.model.Cozinha;
+import com.escudo7.food.domain.model.repository.CozinhaRepository;
 
 public class ConsultaCozinhaMain {
 	
@@ -16,11 +17,11 @@ public class ConsultaCozinhaMain {
 				.web(WebApplicationType.NONE)
 				.run(args);
 		
-		CadastroCozinha cadastroCozinha = applicationContext.getBean(CadastroCozinha.class);
+		CozinhaRepository cozinhas = applicationContext.getBean(CozinhaRepository.class);
 		
-		List<Cozinha> cozinhas = cadastroCozinha.listar();
+		List<Cozinha> todasCozinhas = cozinhas.listar();
 		
-		for (Cozinha cozinha : cozinhas) {
+		for (Cozinha cozinha : todasCozinhas) {
 			System.out.println(cozinha.getNome());
 		}
 	}	

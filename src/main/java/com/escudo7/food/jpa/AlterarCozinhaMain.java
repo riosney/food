@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.escudo7.food.Escudo7foodApiApplication;
 import com.escudo7.food.domain.model.Cozinha;
+import com.escudo7.food.domain.model.repository.CozinhaRepository;
 
 public class AlterarCozinhaMain {
 
@@ -14,13 +15,13 @@ public class AlterarCozinhaMain {
 				.web(WebApplicationType.NONE)
 				.run(args);
 		
-		CadastroCozinha cadastroCozinha = applicationContext.getBean(CadastroCozinha.class);
+		CozinhaRepository cozinhas = applicationContext.getBean(CozinhaRepository.class);
 		
 		Cozinha cozinha = new Cozinha();
 		cozinha.setId(1L);
 		cozinha.setNome("Brasileira");
 		
-		cadastroCozinha.salvar(cozinha);
+		cozinhas.salvar(cozinha);
 	}
 
 }
