@@ -1,4 +1,4 @@
-package com.escudo7.food.domain.model.repository;
+package com.escudo7.food.domain.repository;
 
 import java.util.List;
 

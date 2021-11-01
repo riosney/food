@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.escudo7.food.Escudo7foodApiApplication;
 import com.escudo7.food.domain.model.Cidade;
-import com.escudo7.food.domain.model.repository.CidadeRepository;
+import com.escudo7.food.domain.repository.CidadeRepository;
 
 public class ConsultaCidadeMain {
 	

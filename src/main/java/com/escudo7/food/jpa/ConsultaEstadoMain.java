@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.escudo7.food.Escudo7foodApiApplication;
 import com.escudo7.food.domain.model.Estado;
-import com.escudo7.food.domain.model.repository.EstadoRepository;
+import com.escudo7.food.domain.repository.EstadoRepository;
 
 public class ConsultaEstadoMain {
 	

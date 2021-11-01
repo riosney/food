@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.escudo7.food.Escudo7foodApiApplication;
 import com.escudo7.food.domain.model.Restaurante;
-import com.escudo7.food.domain.model.repository.RestauranteRepository;
+import com.escudo7.food.domain.repository.RestauranteRepository;
 
 public class ConsultaRestauranteMain {
 	

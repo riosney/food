@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.escudo7.food.domain.model.FormaPagamento;
-import com.escudo7.food.domain.model.repository.FormaPagamentoRepository;
+import com.escudo7.food.domain.repository.FormaPagamentoRepository;
 
 @Component
 public class FormaPagamentoRepositoryImpl implements FormaPagamentoRepository  {

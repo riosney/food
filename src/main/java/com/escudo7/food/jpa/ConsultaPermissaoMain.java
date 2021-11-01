@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.escudo7.food.Escudo7foodApiApplication;
 import com.escudo7.food.domain.model.Permissao;
-import com.escudo7.food.domain.model.repository.PermissaoRepository;
+import com.escudo7.food.domain.repository.PermissaoRepository;
 
 public class ConsultaPermissaoMain {
 	

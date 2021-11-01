@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.escudo7.food.Escudo7foodApiApplication;
 import com.escudo7.food.domain.model.Cozinha;
-import com.escudo7.food.domain.model.repository.CozinhaRepository;
+import com.escudo7.food.domain.repository.CozinhaRepository;
 
 public class BuscaCozinhaMain {
 	

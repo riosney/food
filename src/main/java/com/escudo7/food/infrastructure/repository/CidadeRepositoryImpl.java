@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.escudo7.food.domain.model.Cidade;
-import com.escudo7.food.domain.model.repository.CidadeRepository;
+import com.escudo7.food.domain.repository.CidadeRepository;
 
 @Component
 public class CidadeRepositoryImpl implements CidadeRepository {

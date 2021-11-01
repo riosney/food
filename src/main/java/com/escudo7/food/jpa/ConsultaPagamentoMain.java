@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.escudo7.food.Escudo7foodApiApplication;
 import com.escudo7.food.domain.model.FormaPagamento;
-import com.escudo7.food.domain.model.repository.FormaPagamentoRepository;
+import com.escudo7.food.domain.repository.FormaPagamentoRepository;
 
 public class ConsultaPagamentoMain {
 	
