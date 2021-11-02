@@ -1,6 +1,8 @@
 package com.escudo7.food.api.controller;
 
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +33,16 @@ public class CozinhaController {
 	}
 	
 	@GetMapping("/{id}")
-	public Cozinha buscar(@PathVariable("id") Long id) {
-		return cozinhaRepository.buscar(id);
+	public ResponseEntity<Cozinha> buscar(@PathVariable("id") Long id) {
+		Cozinha cozinha = cozinhaRepository.buscar(id);
+		
+		if(cozinha != null) {
+			return ResponseEntity.ok(cozinha);
+		}
+		
+//		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		
+		return ResponseEntity.notFound().build();
 	}
 
 }
