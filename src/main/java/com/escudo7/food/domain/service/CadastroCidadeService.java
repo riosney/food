@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import com.escudo7.food.domain.exeption.EntidadeEmUsoException;
 import com.escudo7.food.domain.exeption.EntidadeNaoEncontradaException;
 import com.escudo7.food.domain.model.Cidade;
+import com.escudo7.food.domain.model.Estado;
 import com.escudo7.food.domain.repository.CidadeRepository;
+import com.escudo7.food.domain.repository.EstadoRepository;
 
 @Service
 public class CadastroCidadeService {
@@ -16,8 +18,21 @@ public class CadastroCidadeService {
 	@Autowired
 	private CidadeRepository cidadeRepository;
 	
+	@Autowired
+    private EstadoRepository estadoRepository;
+	
 	public Cidade salvar(Cidade cidade) {
-		return cidadeRepository.salvar(cidade);
+		Long estadoId = cidade.getEstado().getId();
+        Estado estado = estadoRepository.buscar(estadoId);
+        
+        if (estado == null) {
+            throw new EntidadeNaoEncontradaException(
+                String.format("Não existe cadastro de estado com código %d", estadoId));
+        }
+        
+        cidade.setEstado(estado);
+        
+        return cidadeRepository.salvar(cidade);
 	}
 	
 	public void excluir(Long id) {

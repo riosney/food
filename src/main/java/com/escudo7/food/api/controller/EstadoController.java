@@ -42,7 +42,7 @@ public class EstadoController {
 		Estado estado = estadoRepository.buscar(id);
 		
 		if (estado != null) {
-			ResponseEntity.ok(estado);
+			return ResponseEntity.ok(estado);
 		}
 		
 		return ResponseEntity.notFound().build();
