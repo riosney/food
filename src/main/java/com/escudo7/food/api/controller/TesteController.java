@@ -1,6 +1,9 @@
 package com.escudo7.food.api.controller;
 
 
+import static com.escudo7.food.infrastructure.repository.spec.RestauranteSpecs.comFreteGratis;
+import static com.escudo7.food.infrastructure.repository.spec.RestauranteSpecs.comNomeSemelhante;
+
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
@@ -14,8 +17,6 @@ import com.escudo7.food.domain.model.Cozinha;
 import com.escudo7.food.domain.model.Restaurante;
 import com.escudo7.food.domain.repository.CozinhaRepository;
 import com.escudo7.food.domain.repository.RestauranteRepository;
-import com.escudo7.food.infrastructure.repository.spec.RestauranteComFreteGratisSpec;
-import com.escudo7.food.infrastructure.repository.spec.RestauranteComNomeSemelhanteSpec;
 
 @RestController
 @RequestMapping("/teste")
@@ -77,10 +78,9 @@ public class TesteController {
 	
 	@GetMapping("/restaurantes/com-frete-gratis")
 	public List<Restaurante> restaurantesComFreteGratis(String nome) {
-		var comFreteGratis = new RestauranteComFreteGratisSpec();
-		var comNomeSemelhante = new RestauranteComNomeSemelhanteSpec(nome);
 		
-		return restauranteRepository.findAll(comFreteGratis.and(comNomeSemelhante));
+		return restauranteRepository.findAll(comFreteGratis()
+				.and(comNomeSemelhante(nome)));
 	}
 
 }
