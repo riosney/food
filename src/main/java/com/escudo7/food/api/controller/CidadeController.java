@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.escudo7.food.domain.exeption.EstadoNaoEncontradaException;
 import com.escudo7.food.domain.exeption.NegocioException;
 import com.escudo7.food.domain.model.Cidade;
 import com.escudo7.food.domain.repository.CidadeRepository;
@@ -45,8 +46,8 @@ public class CidadeController {
 	public Cidade adicionar(@RequestBody Cidade cidade){
 		try {
 			return cadastroCidade.salvar(cidade);			
-		} catch (Exception e) {
-			throw new NegocioException(e.getMessage());
+		} catch (EstadoNaoEncontradaException e) {
+			throw new NegocioException(e.getMessage(), e);
 		}
 	}
 	
@@ -59,8 +60,8 @@ public class CidadeController {
 		
 		try {
 			return cadastroCidade.salvar(cidadeAtual);			
-		} catch (Exception e) {
-			throw new NegocioException(e.getMessage());
+		} catch (EstadoNaoEncontradaException e) {
+			throw new NegocioException(e.getMessage(), e);
 		}
 				
 	}
