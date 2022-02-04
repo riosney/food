@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.escudo7.food.domain.exeption.NegocioException;
 import com.escudo7.food.domain.model.Cidade;
 import com.escudo7.food.domain.repository.CidadeRepository;
 import com.escudo7.food.domain.service.CadastroCidadeService;
@@ -42,7 +43,11 @@ public class CidadeController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Cidade adicionar(@RequestBody Cidade cidade){
-		return cadastroCidade.salvar(cidade);
+		try {
+			return cadastroCidade.salvar(cidade);			
+		} catch (Exception e) {
+			throw new NegocioException(e.getMessage());
+		}
 	}
 	
 	@PutMapping("/{cidadeId}")
@@ -51,8 +56,13 @@ public class CidadeController {
 		Cidade cidadeAtual = cadastroCidade.buscarOuFalhar(cidadeId);
 			
 		BeanUtils.copyProperties(cidade, cidadeAtual, "id");
+		
+		try {
+			return cadastroCidade.salvar(cidadeAtual);			
+		} catch (Exception e) {
+			throw new NegocioException(e.getMessage());
+		}
 				
-		return cadastroCidade.salvar(cidadeAtual);
 	}
 	
 	@DeleteMapping("/{cidadeId}")
