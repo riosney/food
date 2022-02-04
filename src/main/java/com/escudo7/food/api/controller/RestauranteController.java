@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.escudo7.food.domain.exeption.EntidadeNaoEncontradaException;
+import com.escudo7.food.domain.exeption.NegocioException;
 import com.escudo7.food.domain.model.Restaurante;
 import com.escudo7.food.domain.repository.RestauranteRepository;
 import com.escudo7.food.domain.service.CadastroRestauranteService;
@@ -46,7 +48,11 @@ public class RestauranteController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Restaurante adicionar(@RequestBody Restaurante restaurante){
-		return cadastroRestaurante.salvar(restaurante);
+		try {
+			return cadastroRestaurante.salvar(restaurante);			
+		} catch (EntidadeNaoEncontradaException e) {
+			throw new NegocioException(e.getMessage());
+		}
 	}
 	
 	@PutMapping("/{restauranteId}")
@@ -56,8 +62,13 @@ public class RestauranteController {
 		
 		BeanUtils.copyProperties(restaurante, restauranteAtual, 
 					"id", "formasPagamento", "endereco", "dataCadastro", "produtos");
+		
+		try {
+			return cadastroRestaurante.salvar(restauranteAtual);			
+		} catch (EntidadeNaoEncontradaException e) {
+			throw new NegocioException(e.getMessage());
+		}
 				
-		return cadastroRestaurante.salvar(restauranteAtual);
 	}
 	
 	@PatchMapping("/{restauranteId}")
