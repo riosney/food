@@ -2,7 +2,7 @@ package com.testes.lambda;
 
 import java.util.List;
 
-public class Exemplo {
+public class ExemploReferenciaMetodo {
 
 	public static void main(String[] args) {
 		List<Fatura> faturasVencidas = new FaturaDAO().buscarFaturasVencidas();
