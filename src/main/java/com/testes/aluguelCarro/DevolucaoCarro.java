@@ -12,7 +12,9 @@ public class DevolucaoCarro {
 		Aluguel aluguel = recuperarAluguel();
 		
 		// A cada hora atraso, é cobrado 10% do valor do carro em multa
-		LocalDateTime dataEHoraRealDaDevolucao = LocalDateTime.of(LocalDate.now().plusDays(5), LocalTime.now());		
+		LocalDateTime dataEHoraRealDaDevolucao = LocalDateTime.of(LocalDate.now().plusDays(1), LocalTime.now());
+		aluguel.setDataEHoraRealDaDevolucao(dataEHoraRealDaDevolucao);
+		aluguel.imprimeFatura();
 	}
 	
 	private static Aluguel recuperarAluguel() {
