@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.escudo7.food.Groups;
+import com.escudo7.food.core.validation.Groups;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonRootName;
 

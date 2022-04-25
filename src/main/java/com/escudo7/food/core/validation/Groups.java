@@ -1,4 +1,4 @@
-package com.escudo7.food;
+package com.escudo7.food.core.validation;
 
 public interface Groups {
 	
