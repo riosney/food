@@ -97,7 +97,7 @@ public class RestauranteController {
 
 	private void validate(Restaurante restaurante, String objectName) {
 		BeanPropertyBindingResult bindingResult = new BeanPropertyBindingResult(restaurante, objectName);
-		validator.validate(restaurante, null);
+		validator.validate(restaurante, bindingResult);
 		
 		if (bindingResult.hasErrors()) {
 			throw new ValidacaoException(bindingResult);
