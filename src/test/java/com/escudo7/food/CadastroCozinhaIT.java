@@ -1,6 +1,7 @@
 package com.escudo7.food;
 
 import org.hamcrest.Matchers;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,14 +18,17 @@ public class CadastroCozinhaIT {
 	
 	@LocalServerPort
 	private int port;
+	
+	@Before
+	public void setUp() {
+		RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+		RestAssured.port = port;
+		RestAssured.basePath = "/cozinhas";
+	}
 
 	@Test
 	public void deveRetornarStatus200_QuandoConsultarCozinhas() {
-		RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-		
 		RestAssured.given()
-			.basePath("/cozinhas")
-			.port(port)
 			.accept(ContentType.JSON)
 		.when()
 			.get()
@@ -33,18 +37,15 @@ public class CadastroCozinhaIT {
 	}
 	
 	@Test
-	public void deveConter4Cozinhas_QuandoConsultarCozinhas() {
-		RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-		
+	public void deveConter4Cozinhas_QuandoConsultarCozinhas() {		
 		RestAssured.given()
-			.basePath("/cozinhas")
-			.port(port)
 			.accept(ContentType.JSON)
 		.when()
 			.get()
 		.then()
 			.body("", Matchers.hasSize(4));
-			//.body("nome", Matchers.hasItems("Indiana", "Tailandesa"));
 	}
+	
+	
 
 }
