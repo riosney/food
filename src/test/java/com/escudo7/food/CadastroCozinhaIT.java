@@ -48,7 +48,7 @@ public class CadastroCozinhaIT {
 		RestAssured.basePath = "/cozinhas";	
 		
 		jsonCorretoCozinhaChinesa = ResourceUtils.getContentFromResource(
-				"/json/cozinha.json");
+				"/json/correto/cozinha.json");
 		
 		databaseCleaner.clearTables();
 		prepararDados();
