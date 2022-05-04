@@ -2,6 +2,7 @@ package com.escudo7.food.domain.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.escudo7.food.domain.exeption.RestauranteNaoEncontradaException;
 import com.escudo7.food.domain.model.Cozinha;
@@ -17,6 +18,7 @@ public class CadastroRestauranteService {
 	@Autowired
 	private CadastroCozinhaService cadastroCozinha;
 	
+	@Transactional
 	public Restaurante salvar(Restaurante restaurante) {
 		Long cozinhaId = restaurante.getCozinha().getId();
 		
