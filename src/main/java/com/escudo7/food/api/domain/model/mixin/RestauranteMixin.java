@@ -1,7 +1,6 @@
 package com.escudo7.food.api.domain.model.mixin;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.escudo7.food.domain.model.Cozinha;
@@ -26,9 +25,9 @@ public abstract class RestauranteMixin {
 	private LocalDateTime dataAtualizacao;
 	
 	@JsonIgnore
-	private List<FormaPagamento> formasPagamentos = new ArrayList<>();
+	private List<FormaPagamento> formasPagamento;
 	
 	@JsonIgnore
-	private List<Produto> produtos = new ArrayList<>();
+	private List<Produto> produtos;
 
 }

@@ -23,7 +23,6 @@ import lombok.EqualsAndHashCode;
 @Entity
 public class Cidade {
 
-	@NotBlank
 	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
