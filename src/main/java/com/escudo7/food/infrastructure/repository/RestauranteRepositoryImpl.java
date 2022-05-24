@@ -1,9 +1,6 @@
 package com.escudo7.food.infrastructure.repository;
 
 
-import static com.escudo7.food.infrastructure.repository.spec.RestauranteSpecs.comFreteGratis;
-import static com.escudo7.food.infrastructure.repository.spec.RestauranteSpecs.comNomeSemelhante;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;

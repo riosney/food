@@ -13,12 +13,11 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.escudo7.food.core.validation.Groups;
-import com.fasterxml.jackson.annotation.JsonRootName;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@JsonRootName("gastronomia")
+//@JsonRootName("gastronomia")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity	
