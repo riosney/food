@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.escudo7.food.api.assembler.RestauranteInputDisassembler;
 import com.escudo7.food.api.assembler.RestauranteModleAssembler;
 import com.escudo7.food.api.model.RestauranteModel;
 import com.escudo7.food.api.model.input.RestauranteInput;
 import com.escudo7.food.domain.exeption.CozinhaNaoEncontradaException;
 import com.escudo7.food.domain.exeption.NegocioException;
-import com.escudo7.food.domain.model.Cozinha;
 import com.escudo7.food.domain.model.Restaurante;
 import com.escudo7.food.domain.repository.RestauranteRepository;
 import com.escudo7.food.domain.service.CadastroRestauranteService;
@@ -38,6 +38,9 @@ public class RestauranteController {
 	
 	@Autowired
 	private RestauranteModleAssembler restauranteModleAssembler;
+	
+	@Autowired
+	private RestauranteInputDisassembler restauranteInputDisassembler;
 		
 	@GetMapping
 	public List<RestauranteModel> listar(){
@@ -55,7 +58,7 @@ public class RestauranteController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public RestauranteModel adicionar(@RequestBody @Valid RestauranteInput restauranteInput){
 		try {
-			Restaurante restaurante = toDomainObject(restauranteInput);
+			Restaurante restaurante = restauranteInputDisassembler.toDomainObject(restauranteInput);
 			
 			return restauranteModleAssembler.toModel(cadastroRestaurante.salvar(restaurante));			
 		} catch (CozinhaNaoEncontradaException e) {
@@ -67,7 +70,7 @@ public class RestauranteController {
 	public RestauranteModel atualizar(@PathVariable Long restauranteId,
 			@RequestBody @Valid RestauranteInput restauranteInput){
 		try {
-			Restaurante restaurante = toDomainObject(restauranteInput);
+			Restaurante restaurante = restauranteInputDisassembler.toDomainObject(restauranteInput);
 			
 			Restaurante restauranteAtual = cadastroRestaurante.buscarOuFalhar(restauranteId);
 		
@@ -80,20 +83,6 @@ public class RestauranteController {
 		}
 				
 	}
-	
-	private Restaurante toDomainObject(RestauranteInput restauranteInput) {
-		Restaurante restaurante = new Restaurante();
-		restaurante.setNome(restauranteInput.getNome());
-		restaurante.setTaxaFrete(restauranteInput.getTaxaFrete());
-		
-		Cozinha cozinha = new Cozinha();
-		cozinha.setId(restauranteInput.getCozinha().getId());
-		
-		restaurante.setCozinha(cozinha);
-		
-		return restaurante;
-	}
-	
 	
 
 }
