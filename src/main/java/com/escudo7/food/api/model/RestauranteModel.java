@@ -11,7 +11,15 @@ public class RestauranteModel {
 	
 	private Long id;
 	private String nome;
-	private BigDecimal taxaFrete;
+	private BigDecimal frete;
 	private CozinhaModel cozinha;
+	
+	// outra forma de mostrar o atributo com ModelMapper
+	/*
+	 * Origem: cozinha,nome
+	 * Destinho: nome,cozinha
+	 */
+	private String nomeCozinha;
+	private Long IdCozinha;
 
 }
